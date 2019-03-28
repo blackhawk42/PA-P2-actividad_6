@@ -39,6 +39,7 @@ int main(int argc, char *argv[]) {
 	while(1) {
 		timestamp = time(NULL);
 		fprintf(log_file, "%llu\n", (long long unsigned)timestamp);
+		fflush(log_file);
 
 		// Every minute
 		sleep(5);
