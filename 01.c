@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 		fflush(log_file);
 
 		// Every minute
-		sleep(5);
+		sleep(60);
 	}
 
 	return 0;
