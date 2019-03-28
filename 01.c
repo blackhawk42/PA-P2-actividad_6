@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
 
 int main(int argc, char *argv[]) {
 	FILE *log_file;
@@ -8,7 +9,10 @@ int main(int argc, char *argv[]) {
 	pid_t process_id;
 	pid_t sid;
 
-	time_t timestamp;
+	time_t unix_timestamp;
+	struct tm *tm_info;
+	char timestamp[32];
+
 
 	process_id = fork();
 	if(process_id < 0) {
@@ -37,8 +41,11 @@ int main(int argc, char *argv[]) {
 	log_file = fopen("log_file.txt", "w");
 
 	while(1) {
-		timestamp = time(NULL);
-		fprintf(log_file, "%llu\n", (long long unsigned)timestamp);
+		time(&unix_timestamp);
+		tm_info = localtime(&unix_timestamp);
+		strftime(timestamp, 32, "%Y-%m-%d %H:%M:%S", tm_info);
+
+		fprintf(log_file, "%s\n", timestamp);
 		fflush(log_file);
 
 		// Every minute
