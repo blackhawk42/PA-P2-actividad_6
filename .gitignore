@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 # File made by this project
-log_file.txt
+#log_file.txt
 
 # Vim
 *.swp
