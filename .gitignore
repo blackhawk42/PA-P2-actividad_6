@@ -53,6 +53,7 @@ dkms.conf
 
 # File made by this project
 #log_file.txt
+shared_mem
 
 # Vim
 *.swp
